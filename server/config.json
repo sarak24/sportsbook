@@ -1,0 +1,9 @@
+{
+    "host": "database-2.cm5p4fs03eou.us-east-1.rds.amazonaws.com",
+    "user": "CIS550Stars",
+    "password": "Nfl157_!",
+    "database": "NFL_DB",
+    "port": 3306,
+    "server_host": "localhost",
+    "server_port": "8080"
+  }

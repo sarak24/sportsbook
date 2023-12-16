@@ -1,0 +1,27 @@
+@import "../../styles/breakpoints";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0c49be;
+  padding: 10px 25px;
+  color: #fff;
+
+  img {
+    cursor: pointer;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  @media (max-width: $sm) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logoText {
+    font-family: "Baloo Chettan 2", sans-serif;
+  }
+}

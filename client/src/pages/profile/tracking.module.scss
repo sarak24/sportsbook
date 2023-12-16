@@ -1,0 +1,36 @@
+.container {
+  .accountDiv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+    .accText {
+      display: flex;
+      align-items: baseline;
+      h1 {
+        margin-right: 20px;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .colorScheme {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .circle {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-left: 5px;
+      }
+    }
+  }
+}

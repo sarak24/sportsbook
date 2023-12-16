@@ -1,0 +1,59 @@
+const gremlin = require('gremlin');
+const Graph = gremlin.structure.Graph;
+const DriverRemoteConnection = gremlin.driver.DriverRemoteConnection;
+const Connection = gremlin.driver.Connection;
+
+const graph = new Graph();
+//const connection = new Connection('localhost:8182/gremlin')
+const client = gremlin.createClient();
+const connection = new DriverRemoteConnection('ws://localhost:8182/gremlin');
+connection.open();
+console.log(connection.isOpen);
+const g = graph.traversal().withRemote(connection);
+
+const __ = gremlin.process.statics;
+
+const column = gremlin.process.column
+const direction = gremlin.process.direction
+const Direction = {
+  BOTH: direction.both,
+  IN: direction.in,
+  OUT: direction.out,
+  from_: direction.out,
+  to: direction.in,
+}
+const p = gremlin.process.P
+const textp = gremlin.process.TextP
+const pick = gremlin.process.pick
+const pop = gremlin.process.pop
+const order = gremlin.process.order
+const scope = gremlin.process.scope
+const t = gremlin.process.t
+const cardinality = gremlin.process.cardinality
+const CardinalityValue = gremlin.process.CardinalityValue
+
+const { t: { id } } = gremlin.process;
+const { cardinality: { single } } = gremlin.process;
+
+const createVertex = async (vertexId, vlabel) => {
+    const vertex = await g.addV(vlabel)
+      .property(id, vertexId)
+      .property(single, 'name', 'Apache')
+      .property('lastname', 'Tinkerpop') // default database cardinality
+      .next();
+  
+    return vertex;
+  };
+console.log(createVertex(7, 'student'));
+
+async function getStudents() {
+    const response = await g.V().next();
+    console.log(response.graph)
+}
+getStudents();
+
+/*
+g.addV('student').property('name', 'Jeffery').property('GPA', 4.0).next();
+g.V().toList()
+  .then(names => console.log(names));
+  */
